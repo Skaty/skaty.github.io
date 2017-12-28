@@ -95,5 +95,29 @@
       <div id="desc">
         Yes, you can click on those icons!
       </div>
-    </div> </body>
-  </html>
+    </div>
+    <script>
+        window.onload = function() {
+            var elemArray = document.getElementsByClassName("icon-container");
+            var descElem = document.getElementById("desc");
+
+            var setHelpText = function(event) {
+                descElem.innerHTML = event.currentTarget.title;
+            };
+
+            var resetHelpText = function(event) {
+                descElem.innerHTML = 'Yes, you can click on those icons!';
+            }
+
+            for (var i = 0; i < elemArray.length; i++) {
+                elemArray[i].addEventListener("mouseenter", setHelpText);
+                elemArray[i].addEventListener("touchstart", setHelpText);
+                elemArray[i].addEventListener("mouseleave", resetHelpText);
+                elemArray[i].addEventListener("touchend", resetHelpText);
+            }
+        };
+    </script>
+
+
+    </body>
+</html>
